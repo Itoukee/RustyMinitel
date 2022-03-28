@@ -1,6 +1,8 @@
 mod second;
+mod basicSys;
+
 
 fn main() {
     println!("Hello, world!");
-    second::super_test();
+    basicSys::basic();
 }

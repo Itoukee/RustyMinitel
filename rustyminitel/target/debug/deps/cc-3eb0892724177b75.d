@@ -1,0 +1,8 @@
+/home/nino/etna/RustyMinitel/rustyminitel/target/debug/deps/cc-3eb0892724177b75.rmeta: /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.73/src/lib.rs /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.73/src/windows_registry.rs
+
+/home/nino/etna/RustyMinitel/rustyminitel/target/debug/deps/libcc-3eb0892724177b75.rlib: /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.73/src/lib.rs /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.73/src/windows_registry.rs
+
+/home/nino/etna/RustyMinitel/rustyminitel/target/debug/deps/cc-3eb0892724177b75.d: /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.73/src/lib.rs /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.73/src/windows_registry.rs
+
+/home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.73/src/lib.rs:
+/home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.73/src/windows_registry.rs:
