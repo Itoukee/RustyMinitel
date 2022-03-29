@@ -6,6 +6,8 @@ body {
 }
 
 .title {
+  font-family: Impact, fantasy;
+  padding-top: 5%;
   text-align: center;
   color : white;
 }
@@ -29,12 +31,14 @@ body {
 }
 
 .box p {
+  font-family: Impact, fantasy;	
   color: white;
   text-align: center;
 }
 
 button {
   margin: 10%;
+  font-family: Impact, fantasy;
   text-transform: uppercase;
   margin: 15px;
 }
