@@ -1,10 +1,9 @@
 
-use sysinfo::{NetworkExt, NetworksExt, ProcessExt, System, SystemExt,ProcessorExt,Processor,Component,ComponentExt};
+use sysinfo::{System, SystemExt,ProcessorExt,ComponentExt};
 use std::collections::HashMap;
-extern crate cpuid;
 
 
-pub fn get_os_infos(mut sys: &System) -> HashMap<&'static str, Option<String>> {
+pub fn get_os_infos(sys: &System) -> HashMap<&'static str, Option<String>> {
     let mut os_info:HashMap<&'static str, Option<String>> = HashMap::new();
     os_info.insert("os_name",sys.name());
     os_info.insert("kernel_version",sys.kernel_version());

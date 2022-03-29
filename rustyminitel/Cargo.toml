@@ -8,5 +8,5 @@ edition = "2021"
 [dependencies]
 
 sysinfo = { git = "https://github.com/GuillaumeGomez/sysinfo" }
-systemstat = {git = "https://github.com/unrelentingtech/systemstat"}
-cpuid = "*"
+local-ip = "0.1"
+
