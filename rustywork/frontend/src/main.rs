@@ -8,7 +8,9 @@ fn main() {
 pub fn app() -> Html {
     html! {
         <div>
-            <h2 class={"heading"}>{"Hello, World!"}</h2>
+            <h2 class="heading">{"RustyMinitel"}</h2>
+            <p>{"Test"}</p>
         </div>
     }
 }
+

@@ -1,7 +1,6 @@
 body {
   margin: 20px;
-  background: #2d2d2d;
-  color: white;
+  background-image:url(image/image.jpeg);
 }
 
 .heading {
