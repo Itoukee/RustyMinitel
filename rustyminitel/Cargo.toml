@@ -9,3 +9,4 @@ edition = "2021"
 
 sysinfo = { git = "https://github.com/GuillaumeGomez/sysinfo" }
 systemstat = {git = "https://github.com/unrelentingtech/systemstat"}
+cpuid = "*"
