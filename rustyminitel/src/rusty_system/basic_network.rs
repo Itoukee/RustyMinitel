@@ -1,6 +1,7 @@
 use sysinfo::{System, NetworksExt, Networks, NetworkData, SystemExt, NetworksIter, NetworkExt};
 use std::collections::HashMap;
-extern crate local_ip;
+use std::process::Command;
+use std::str::from_utf8;
 
 pub fn get_networks(sys:&System) -> Vec<HashMap<&'static str, String>> {
 
@@ -20,7 +21,12 @@ pub fn get_networks(sys:&System) -> Vec<HashMap<&'static str, String>> {
     return net_advanced;
 }
 
-pub fn get_ip() -> String {
-    return local_ip::get().unwrap().to_string();
+pub fn get_ip_routes() -> String {
+    let mut command = Command::new("ip");
+    command.args(["route","list"]);
+    let output = command.output().unwrap();
+
+    return (from_utf8(&output.stdout[..]).unwrap()).to_string();
+
 
 }
