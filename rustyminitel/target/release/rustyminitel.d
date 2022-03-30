@@ -1,0 +1,1 @@
+/home/nino/etna/RustyMinitel/rustyminitel/target/release/rustyminitel: /home/nino/etna/RustyMinitel/rustyminitel/src/main.rs /home/nino/etna/RustyMinitel/rustyminitel/src/rusty_system/basic_network.rs /home/nino/etna/RustyMinitel/rustyminitel/src/rusty_system/basic_process.rs /home/nino/etna/RustyMinitel/rustyminitel/src/rusty_system/basic_sys.rs

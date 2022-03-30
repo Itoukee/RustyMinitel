@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="CargoProjects">
+    <cargoProject FILE="$PROJECT_DIR$/rustyminitel/Cargo.toml" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9c3b7298-eace-483d-b858-f21dddb96846" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/action.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rustyminitel/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/rustyminitel/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rustyminitel/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/rustyminitel/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rustyminitel/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/rustyminitel/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rustyminitel/src/rusty_system/basic_network.rs" beforeDir="false" afterPath="$PROJECT_DIR$/rustyminitel/src/rusty_system/basic_network.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rustyminitel/src/rusty_system/basic_sys.rs" beforeDir="false" afterPath="$PROJECT_DIR$/rustyminitel/src/rusty_system/basic_sys.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rustyminitel/target/debug/rustyminitel" beforeDir="false" afterPath="$PROJECT_DIR$/rustyminitel/target/debug/rustyminitel" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Rust File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="y1hv0qzz" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="270Q1nG1goEDc3U9SfgTjRKDOOU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../rust-cpuid" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
+    <property name="org.rust.disableDetachedFileInspection/home/nino/etna/RustyMinitel/rustyminitel/src/rusty_system/basic_process.rs" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/rustyminitel/src/rusty_system" />
+    </key>
+  </component>
+  <component name="RustProjectSettings">
+    <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+    <option name="version" value="2" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9c3b7298-eace-483d-b858-f21dddb96846" name="Changes" comment="" />
+      <created>1648454311705</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1648454311705</updated>
+      <workItem from="1648454315011" duration="22548000" />
+      <workItem from="1648498259964" duration="168000" />
+      <workItem from="1648498480495" duration="113000" />
+      <workItem from="1648498839222" duration="338000" />
+      <workItem from="1648538071473" duration="15647000" />
+      <workItem from="1648623564898" duration="2986000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
