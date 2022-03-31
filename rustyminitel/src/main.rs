@@ -1,22 +1,20 @@
 // #[path = "./rusty_system/basic_sys.rs"]
 // mod basic_sys;
 
-// #[path = "./rusty_system/basic_process.rs"]
-// mod basic_process;
+#[path = "./rusty_system/basic_process.rs"]
+mod basic_process;
 
 // #[path = "./rusty_system/basic_network.rs"]
 // mod basic_network;
 
-//use cursive::traits::*;
-use cursive::views::{Dialog, LinearLayout};
+// use cursive::view::Resizable;
+use cursive::views::{Button, Dialog, DummyView, LinearLayout, TextView};
 use cursive::Cursive;
-//use sysinfo::{System, SystemExt};
+use sysinfo::{System, SystemExt};
 
 fn main() {
-    // Creates the cursive root - required for every application.
     let mut siv = cursive::default();
 
-    // Creates a dialog with a single "Quit" button
     siv.add_layer(
         Dialog::text("Select :")
             .title("RustyMinitel")
@@ -26,7 +24,6 @@ fn main() {
             .button("Quit", |_q| _q.quit()),
     );
 
-    // Starts the event loop.
     siv.run();
 }
 
@@ -50,13 +47,41 @@ fn network(s: &mut Cursive) {
 }
 
 fn process(s: &mut Cursive) {
-    // let select = SelectView::<String>::new()
-    //     .on_submit(on_submit)
-    //     .with_name("select")
-    //     .fixed_size((10, 5));
+    let mut cpt = 1;
+    let sys = System::new_all();
+    let processes = basic_process::get_all_process(&sys);
+
+    let buttons = LinearLayout::vertical()
+        .child(DummyView)
+        .child(Button::new("Return to menu", menu));
+    let process_infos1 = LinearLayout::vertical()
+        .child(DummyView)
+        .child(TextView::new("test"));
+    let process_infos2 = LinearLayout::vertical()
+        .child(DummyView)
+        .child(TextView::new("test"));
+    let mut process = LinearLayout::vertical().child(DummyView);
+    for proc in processes {
+        let process_info = format!("Process n°{}", cpt);
+        process.add_child(Button::new(process_info, menu));
+        // // for (key, value) in proc.into_iter() {
+        //     print!("{} ", value);
+        // }
+        cpt += 1;
+    }
 
     s.pop_layer();
-    s.add_layer(Dialog::around(LinearLayout::horizontal()).title("Selection "));
+    s.add_layer(
+        Dialog::around(
+            LinearLayout::horizontal()
+                .child(process)
+                .child(process_infos1)
+                .child(process_infos2)
+                .child(DummyView)
+                .child(buttons),
+        )
+        .title("RustyMinitel / Process"),
+    );
 }
 
 fn menu(s: &mut Cursive) {
@@ -70,15 +95,6 @@ fn menu(s: &mut Cursive) {
             .button("Quit", |_q| _q.quit()),
     );
 }
-
-// fn on_submit(s: &mut Cursive, name: &str) {
-//     s.pop_layer();
-//     s.add_layer(
-//         Dialog::text(format!("Name: {}\nAwesome: yes", name))
-//             .title(format!("{}'s info", name))
-//             .button("Quit", Cursive::quit),
-//     );
-// }
 
 // fn main() {
 //     let mut sys = System::new_all();
