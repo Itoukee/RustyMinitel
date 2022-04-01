@@ -4,13 +4,15 @@
 // #[path = "./rusty_system/basic_process.rs"]
 // mod basic_process;
 
-// #[path = "./rusty_system/basic_network.rs"]
-// mod basic_network;
+#[path = "./rusty_system/basic_network.rs"]
+mod basic_network;
 
-//use cursive::traits::*;
+// use cursive::traits::*;
 use cursive::views::{Dialog, LinearLayout};
 use cursive::Cursive;
-//use sysinfo::{System, SystemExt};
+use cursive::view::Resizable;
+use sysinfo::{System, SystemExt};
+// use sysinfo::{SystemExt};
 
 fn main() {
     // Creates the cursive root - required for every application.
@@ -31,23 +33,45 @@ fn main() {
 }
 
 fn information(s: &mut Cursive) {
-    /*_s.add_layer(Dialog::info("Try again!")) → Debug*/
+    
+    let mut sys = System::new_all();
+
     s.pop_layer();
     s.add_layer(
         Dialog::text("Informations User")
             .title("RustyMinitel / Informations")
-            .button("Exit", menu),
+            .button("Return Menu", menu),
     );
 }
 
 fn network(s: &mut Cursive) {
     s.pop_layer();
     s.add_layer(
-        Dialog::text("Network User")
+        Dialog::text("Network User :")
             .title("RustyMinitel / Network")
-            .button("Return Menu", menu),
-    );
+            .button("Return Menu", menu)
+            .biblionetwork()
+            .fixed_size((75, 25)),
+        );
 }
+
+fn biblionetwork (s: &mut Cursive) {
+
+    let mut cpt = 1;
+    let mut sys = System::new_all();
+
+    sys.refresh_all();
+    let networks = basic_network::get_networks(&sys);
+
+    Dialog::text("\n\n ============== NETWORK INFO ===============");
+        for net in networks{
+            println!("\nNetwork n°{} : ",cpt);
+            for(key,value) in net.into_iter(){
+                print!("{} : {} ",key,value);
+            }
+            cpt+=1;
+        } cpt = 0;
+    }
 
 fn process(s: &mut Cursive) {
     // let select = SelectView::<String>::new()
