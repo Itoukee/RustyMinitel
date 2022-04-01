@@ -12,13 +12,10 @@ use cursive::views::{Button, Dialog, DummyView, LinearLayout, TextView};
 use cursive::Cursive;
 use cursive::view::Resizable;
 use sysinfo::{System, SystemExt};
-// use sysinfo::{SystemExt};
 
 fn main() {
-    // Creates the cursive root - required for every application.
     let mut siv = cursive::default();
 
-    // Creates a dialog with a single "Quit" button
     siv.add_layer(
         Dialog::text("Select :")
             .title("RustyMinitel")
@@ -28,7 +25,6 @@ fn main() {
             .button("Quit", |_q| _q.quit()),
     );
 
-    // Starts the event loop.
     siv.run();
 }
 
@@ -74,7 +70,6 @@ fn biblionetwork (s: &mut Cursive) {
     }
 
 fn process(s: &mut Cursive) {
-    // let select = SelectView::<String>::new()
     let mut cpt = 1;
     let sys = System::new_all();
     let processes = basic_process::get_all_process(&sys);
@@ -123,15 +118,6 @@ fn menu(s: &mut Cursive) {
             .button("Quit", |_q| _q.quit()),
     );
 }
-
-// fn on_submit(s: &mut Cursive, name: &str) {
-//     s.pop_layer();
-//     s.add_layer(
-//         Dialog::text(format!("Name: {}\nAwesome: yes", name))
-//             .title(format!("{}'s info", name))
-//             .button("Quit", Cursive::quit),
-//     );
-// }
 
 // fn main() {
 //     let mut sys = System::new_all();
