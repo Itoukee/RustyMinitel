@@ -58,16 +58,19 @@ fn network(s: &mut Cursive) {
     let mut cpt = 1;
     let sys = System::new_all();
     let networks = basic_network::get_networks(&sys);
-    let mut net_name_column = LinearLayout::vertical();
-    let mut data_received_column = LinearLayout::vertical();
-    let mut data_transmitted_column = LinearLayout::vertical();
-    let mut data_transmitted_total_column = LinearLayout::vertical();
-    
-        let mut netwo = LinearLayout::vertical();
+    let mut net_name_column = LinearLayout::vertical().child(DummyView).child(TextView::new("Network Name  ")).child(DummyView);
+    let mut data_received_column = LinearLayout::vertical().child(DummyView).child(TextView::new("Data Received  ")).child(DummyView);
+    let mut data_transmitted_column = LinearLayout::vertical().child(DummyView).child(TextView::new("Data transmitted  ")).child(DummyView);
+    let mut data_transmitted_total_column = LinearLayout::vertical().child(DummyView).child(TextView::new("Total data transmitted  ")).child(DummyView);
+    let mut return_button_layout = LinearLayout::vertical().child(DummyView);
+    let mut netwo = LinearLayout::vertical().child(DummyView).child(TextView::new("Network number  ")).child(DummyView);
+
         for net in networks{
             let network_info = format!("Network n°{} : ", cpt);
             netwo.add_child(TextView::new(network_info));
             netwo.add_child(DummyView);
+            return_button_layout.add_child(DummyView);
+            return_button_layout.add_child(DummyView);
                 for(key,value) in net.into_iter(){
                       let net_info = key.to_string();
                       let net_value = value.to_string();
@@ -90,11 +93,11 @@ fn network(s: &mut Cursive) {
                       } else if net_info == case_4{
                         data_transmitted_total_column.add_child(TextView::new(space_value));
                         data_transmitted_total_column.add_child(DummyView);
-                      }
+                      }  
                 }
             cpt+=1;
         }
-
+        return_button_layout.add_child(Button::new("Return Menu", menu));
     s.pop_layer();
     s.add_layer(
         Dialog::around(
@@ -104,9 +107,9 @@ fn network(s: &mut Cursive) {
             .child(data_received_column)
             .child(data_transmitted_column)
             .child(data_transmitted_total_column)
-            .child(Button::new("Return Menu", menu)),
+            .child(return_button_layout),
         )
-            .title("Network User")
+            .title("RustyMinitel / Network")
         );
     }
 
