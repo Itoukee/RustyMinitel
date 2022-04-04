@@ -1,5 +1,5 @@
-// #[path = "./rusty_system/basic_sys.rs"]
-// mod basic_sys;
+#[path = "./rusty_system/basic_sys.rs"]
+mod basic_sys;
 
 #[path = "./rusty_system/basic_process.rs"]
 mod basic_process;
@@ -31,43 +31,86 @@ fn main() {
 fn information(s: &mut Cursive) {
     
     let mut sys = System::new_all();
+    //let base = basic_sys::get_os_infos(&sys);
+    let mut os_name = LinearLayout::vertical();
+
+    let mut base_info = LinearLayout::vertical();
+    /*
+    for info in base {
+        base_info.add_child(DummyView);
+        for(key, value) in base.into_iter(){
+        }
+    }*/
+    
 
     s.pop_layer();
     s.add_layer(
-        Dialog::text("Informations User")
-            .title("RustyMinitel / Informations")
-            .button("Return Menu", menu),
+        Dialog::around(
+            LinearLayout::horizontal()
+            .child(base_info)
+            .child(Button::new("Return Menu", menu)),
+        )
+        .title("RustyMinitel / Informations")
     );
 }
 
 fn network(s: &mut Cursive) {
+    let mut cpt = 1;
+    let sys = System::new_all();
+    let networks = basic_network::get_networks(&sys);
+    let mut net_name_column = LinearLayout::vertical();
+    let mut data_received_column = LinearLayout::vertical();
+    let mut data_transmitted_column = LinearLayout::vertical();
+    let mut data_transmitted_total_column = LinearLayout::vertical();
+    
+        let mut netwo = LinearLayout::vertical();
+        for net in networks{
+            let network_info = format!("Network n°{} : ", cpt);
+            netwo.add_child(TextView::new(network_info));
+            netwo.add_child(DummyView);
+                for(key,value) in net.into_iter(){
+                      let net_info = key.to_string();
+                      let net_value = value.to_string();
+
+                      let space_value = format!("{}  ", net_value);
+
+                      let case_1 = String::from("net_name");
+                      let case_2 = String::from("data_received");
+                      let case_3 = String::from("data_transmitted");
+                      let case_4 = String::from("data_transmitted_total");
+                      if net_info == case_1 {
+                          net_name_column.add_child(TextView::new(space_value));
+                          net_name_column.add_child(DummyView);
+                      } else if net_info == case_2 {
+                          data_received_column.add_child(TextView::new(space_value));
+                          data_received_column.add_child(DummyView);
+                      } else if net_info == case_3 {
+                        data_transmitted_column.add_child(TextView::new(space_value));
+                        data_transmitted_column.add_child(DummyView);
+                      } else if net_info == case_4{
+                        data_transmitted_total_column.add_child(TextView::new(space_value));
+                        data_transmitted_total_column.add_child(DummyView);
+                      }
+                }
+            cpt+=1;
+        }
+
     s.pop_layer();
     s.add_layer(
-        Dialog::text("Network User :")
-            .title("RustyMinitel / Network")
-            .button("Return Menu", menu)
-            .biblionetwork()
-            .fixed_size((75, 25)),
+        Dialog::around(
+            LinearLayout::horizontal()
+            .child(netwo)
+            .child(net_name_column)
+            .child(data_received_column)
+            .child(data_transmitted_column)
+            .child(data_transmitted_total_column)
+            .child(Button::new("Return Menu", menu)),
+        )
+            .title("Network User")
         );
-}
-
-fn biblionetwork (s: &mut Cursive) {
-
-    let mut cpt = 1;
-    let mut sys = System::new_all();
-
-    sys.refresh_all();
-    let networks = basic_network::get_networks(&sys);
-
-    Dialog::text("\n\n ============== NETWORK INFO ===============");
-        for net in networks{
-            println!("\nNetwork n°{} : ",cpt);
-            for(key,value) in net.into_iter(){
-                print!("{} : {} ",key,value);
-            }
-            cpt+=1;
-        } cpt = 0;
     }
+
+
 
 fn process(s: &mut Cursive) {
     let mut cpt = 1;
