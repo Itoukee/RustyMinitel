@@ -1,4 +1,4 @@
-use sysinfo::{System, NetworksExt, Networks, NetworkData, SystemExt, NetworksIter, NetworkExt};
+use sysinfo::{System, SystemExt, NetworkExt};
 use std::collections::HashMap;
 use std::process::Command;
 use std::str::from_utf8;

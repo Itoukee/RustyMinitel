@@ -75,7 +75,7 @@ fn main() {
             print!("{} : {} ",key,value);
         }
         cpt+=1;
-    } cpt = 0;
+    }
 
 
     println!("\n\n ============== TABLE ROUTES IP ===============");
