@@ -97,6 +97,7 @@ fn cpu_menu_more(s: &mut Cursive) {
         if key == "core_temps" {
             cpt = 1;
             for i in value {
+                adv_cpu_info.add_child(DummyView);
                 let info_cpu = format!("Core {} : {}°C ", cpt, i);
                 adv_cpu_info.add_child(TextView::new(info_cpu));
             }
@@ -104,6 +105,7 @@ fn cpu_menu_more(s: &mut Cursive) {
         } else if key == "core_freqs"{
             cpt = 1;
             for i in value {
+                adv_cpu_info.add_child(DummyView);
                 let info_cpu = format!("Core {} : {}MHz ", cpt, i);
                 adv_cpu_info.add_child(TextView::new(info_cpu));
                 cpt+=1;
@@ -112,6 +114,7 @@ fn cpu_menu_more(s: &mut Cursive) {
         } else if key=="comp_temps"{
             cpt = 1;
             for i in value {
+                adv_cpu_info.add_child(DummyView);
                 let info_cpu = format!("Component : {}°C ", i);
                 adv_cpu_info.add_child(TextView::new(info_cpu));
             }
@@ -126,7 +129,9 @@ fn cpu_menu_more(s: &mut Cursive) {
     s.add_layer(
         Dialog::around(
             LinearLayout::horizontal()
-                .child(adv_cpu_info),
+                .child(DummyView)
+                .child(adv_cpu_info)
+                .child(DummyView),
         )
         .title("RustyMinitel / Informations / CPU / More"),
     );
@@ -142,6 +147,7 @@ fn network(s: &mut Cursive) {
     let mut data_transmitted_total_column = LinearLayout::vertical().child(DummyView).child(TextView::new("Total data transmitted  ")).child(DummyView);
     let mut return_button_layout = LinearLayout::vertical().child(DummyView);
     let mut netwo = LinearLayout::vertical().child(DummyView).child(TextView::new("Network number  ")).child(DummyView);
+    let mut ip_column = LinearLayout::horizontal();
 
         for net in networks{
             let network_info = format!("Network n°{} : ", cpt);
@@ -175,17 +181,26 @@ fn network(s: &mut Cursive) {
                 }
             cpt+=1;
         }
+
         return_button_layout.add_child(Button::new("Return Menu", menu));
+        let string_ip = format!("{}", basic_network::get_ip_routes());
+        ip_column.add_child(TextView::new(string_ip));
     s.pop_layer();
     s.add_layer(
         Dialog::around(
-            LinearLayout::horizontal()
-            .child(netwo)
-            .child(net_name_column)
-            .child(data_received_column)
-            .child(data_transmitted_column)
-            .child(data_transmitted_total_column)
-            .child(return_button_layout),
+            LinearLayout::vertical()
+                .child(LinearLayout::horizontal()
+                    .child(netwo)
+                    .child(net_name_column)
+                    .child(data_received_column)
+                    .child(data_transmitted_column)
+                    .child(data_transmitted_total_column)
+                    .child(return_button_layout),
+                )
+                .child(LinearLayout::horizontal()
+                        .child(ip_column),
+                )
+
         )
             .title("RustyMinitel / Network")
         );
