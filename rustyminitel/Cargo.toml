@@ -8,5 +8,4 @@ edition = "2021"
 [dependencies]
 
 sysinfo = { git = "https://github.com/GuillaumeGomez/sysinfo" }
-local-ip = "0.1"
 

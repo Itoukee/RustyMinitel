@@ -17,6 +17,7 @@ fn main() {
     let base = basic_sys::get_os_infos(&sys);
     let processes = basic_process::get_all_process(&sys);
     let networks = basic_network::get_networks(&sys);
+
     let mut cpt = 1;
 
     sys.refresh_all();
@@ -74,7 +75,13 @@ fn main() {
             print!("{} : {} ",key,value);
         }
         cpt+=1;
-    } cpt = 0;
+    }
+
+
+    println!("\n\n ============== TABLE ROUTES IP ===============");
+    println!("{}",basic_network::get_ip_routes());
+
+
 
 
 }
