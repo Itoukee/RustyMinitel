@@ -9,14 +9,11 @@
     <cargoProject FILE="$PROJECT_DIR$/rustyminitel/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c3b7298-eace-483d-b858-f21dddb96846" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/action.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rustyminitel/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/rustyminitel/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rustyminitel/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/rustyminitel/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rustyminitel/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/rustyminitel/src/main.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rustyminitel/src/rusty_system/basic_network.rs" beforeDir="false" afterPath="$PROJECT_DIR$/rustyminitel/src/rusty_system/basic_network.rs" afterDir="false" />
+    <list default="true" id="9c3b7298-eace-483d-b858-f21dddb96846" name="Changes" comment="[FEATURE] ip routing table">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/installer_tool.sh" beforeDir="false" afterPath="$PROJECT_DIR$/installer_tool.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rustyminitel/src/rusty_system/basic_sys.rs" beforeDir="false" afterPath="$PROJECT_DIR$/rustyminitel/src/rusty_system/basic_sys.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rustyminitel/target/debug/rustyminitel" beforeDir="false" afterPath="$PROJECT_DIR$/rustyminitel/target/debug/rustyminitel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rustyminitel_installer.sh" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,8 +82,21 @@
       <workItem from="1648498480495" duration="113000" />
       <workItem from="1648498839222" duration="338000" />
       <workItem from="1648538071473" duration="15647000" />
-      <workItem from="1648623564898" duration="2986000" />
+      <workItem from="1648623564898" duration="4054000" />
+      <workItem from="1648628475051" duration="4470000" />
+      <workItem from="1648635914932" duration="1679000" />
+      <workItem from="1648645331962" duration="4247000" />
+      <workItem from="1649229573201" duration="42000" />
+      <workItem from="1649251317474" duration="1084000" />
     </task>
+    <task id="LOCAL-00001" summary="[FEATURE] ip routing table">
+      <created>1648626679818</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1648626679818</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,5 +115,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="[FEATURE] ip routing table" />
+    <option name="LAST_COMMIT_MESSAGE" value="[FEATURE] ip routing table" />
   </component>
 </project>

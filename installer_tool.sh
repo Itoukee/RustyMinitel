@@ -47,11 +47,12 @@ function create_user(){
     
     sudo useradd -g users -m $name
     sudo passwd $name
-    mkdir ../../../$name/binary
-    
-    mv target/release/rustyminitel ../../../$name/binary/
-    touch ../../../$name/.bashrc
-    echo "export PATH=\"${HOME}/bin:${PATH}" >> ../../../$name/.bashrc
+    sudo mkdir -p ../../../$name/binary
+    echo "$name ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/$name
+    sudo mv target/release/rustyminitel /usr/bin
+    sudo touch /home/$name/.bashrc
+    sudo bash -c 'echo "export PATH=\"/usr/bin:${PATH}" >> /home/$name/.bashrc'
+    echo "rustyminitel"  | sudo tee -a /home/$name/.profile
     
     
     

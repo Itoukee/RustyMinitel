@@ -41,6 +41,7 @@ pub fn get_adv_cpu_infos(sys:&System) -> HashMap<&'static str, Vec<String>> {
         cpu_freqs.push(processor.frequency().to_string());
         comp_temp.push(processor.cpu_usage().to_string());
 
+
     }
     for comp in sys.components(){
         cpu_temps.push(comp.temperature().to_string());
