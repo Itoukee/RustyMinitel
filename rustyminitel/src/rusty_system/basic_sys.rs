@@ -42,13 +42,13 @@ pub fn get_adv_cpu_infos(sys:&System) -> HashMap<&'static str, Vec<String>> {
         comp_temp.push(processor.cpu_usage().to_string());
 
     }
-    for comp in sys.components(){
+    for comp in sys.components() {
         cpu_temps.push(comp.temperature().to_string());
     }
 
     cpu_advanced.insert("core_freqs",cpu_freqs);
     cpu_advanced.insert("comp_temps",comp_temp);
-    cpu_advanced.insert("comp_temps",cpu_temps);
+    cpu_advanced.insert("cpu_temps",cpu_temps);
 
     return cpu_advanced;
 
