@@ -7,11 +7,11 @@ mod basic_process;
 #[path = "./rusty_system/basic_network.rs"]
 mod basic_network;
 
-// use cursive::traits::*;
-use cursive::views::{Button, Dialog, DummyView, LinearLayout, TextView};
-use cursive::Cursive;
+use cursive::traits::*;
 use cursive::view::Resizable;
-use sysinfo::{System, SystemExt};
+use cursive::views::{Button, Dialog, DummyView, EditView, LinearLayout, TextView};
+use cursive::Cursive;
+use sysinfo::{Pid, ProcessExt, System, SystemExt};
 
 fn main() {
     let mut siv = cursive::default();
@@ -48,11 +48,8 @@ fn information(s: &mut Cursive) {
 
     s.pop_layer();
     s.add_layer(
-        Dialog::around(
-            LinearLayout::horizontal()
-                .child(base_info),
-        )
-        .title("RustyMinitel / Informations / System"),
+        Dialog::around(LinearLayout::horizontal().child(base_info))
+            .title("RustyMinitel / Informations / System"),
     );
 }
 
@@ -77,11 +74,8 @@ fn cpu_menu(s: &mut Cursive) {
 
     s.pop_layer();
     s.add_layer(
-        Dialog::around(
-            LinearLayout::horizontal()
-                .child(cpu_info),
-        )
-        .title("RustyMinitel / Informations / CPU"),
+        Dialog::around(LinearLayout::horizontal().child(cpu_info))
+            .title("RustyMinitel / Informations / CPU"),
     );
 }
 
@@ -102,16 +96,16 @@ fn cpu_menu_more(s: &mut Cursive) {
                 adv_cpu_info.add_child(TextView::new(info_cpu));
             }
             adv_cpu_info.add_child(DummyView);
-        } else if key == "core_freqs"{
+        } else if key == "core_freqs" {
             cpt = 1;
             for i in value {
                 adv_cpu_info.add_child(DummyView);
                 let info_cpu = format!("Core {} : {}MHz ", cpt, i);
                 adv_cpu_info.add_child(TextView::new(info_cpu));
-                cpt+=1;
+                cpt += 1;
             }
             adv_cpu_info.add_child(DummyView);
-        } else if key=="comp_temps"{
+        } else if key == "comp_temps" {
             cpt = 1;
             for i in value {
                 adv_cpu_info.add_child(DummyView);
@@ -141,72 +135,83 @@ fn network(s: &mut Cursive) {
     let mut cpt = 1;
     let sys = System::new_all();
     let networks = basic_network::get_networks(&sys);
-    let mut net_name_column = LinearLayout::vertical().child(DummyView).child(TextView::new("Network Name  ")).child(DummyView);
-    let mut data_received_column = LinearLayout::vertical().child(DummyView).child(TextView::new("Data Received  ")).child(DummyView);
-    let mut data_transmitted_column = LinearLayout::vertical().child(DummyView).child(TextView::new("Data transmitted  ")).child(DummyView);
-    let mut data_transmitted_total_column = LinearLayout::vertical().child(DummyView).child(TextView::new("Total data transmitted  ")).child(DummyView);
+    let mut net_name_column = LinearLayout::vertical()
+        .child(DummyView)
+        .child(TextView::new("Network Name  "))
+        .child(DummyView);
+    let mut data_received_column = LinearLayout::vertical()
+        .child(DummyView)
+        .child(TextView::new("Data Received  "))
+        .child(DummyView);
+    let mut data_transmitted_column = LinearLayout::vertical()
+        .child(DummyView)
+        .child(TextView::new("Data transmitted  "))
+        .child(DummyView);
+    let mut data_transmitted_total_column = LinearLayout::vertical()
+        .child(DummyView)
+        .child(TextView::new("Total data transmitted  "))
+        .child(DummyView);
     let mut return_button_layout = LinearLayout::vertical().child(DummyView);
-    let mut netwo = LinearLayout::vertical().child(DummyView).child(TextView::new("Network number  ")).child(DummyView);
+    let mut netwo = LinearLayout::vertical()
+        .child(DummyView)
+        .child(TextView::new("Network number  "))
+        .child(DummyView);
     let mut ip_column = LinearLayout::horizontal();
 
-        for net in networks{
-            let network_info = format!("Network n°{} : ", cpt);
-            netwo.add_child(TextView::new(network_info));
-            netwo.add_child(DummyView);
-            return_button_layout.add_child(DummyView);
-            return_button_layout.add_child(DummyView);
-                for(key,value) in net.into_iter(){
-                      let net_info = key.to_string();
-                      let net_value = value.to_string();
+    for net in networks {
+        let network_info = format!("Network n°{} : ", cpt);
+        netwo.add_child(TextView::new(network_info));
+        netwo.add_child(DummyView);
+        return_button_layout.add_child(DummyView);
+        return_button_layout.add_child(DummyView);
+        for (key, value) in net.into_iter() {
+            let net_info = key.to_string();
+            let net_value = value.to_string();
 
-                      let space_value = format!("{}  ", net_value);
+            let space_value = format!("{}  ", net_value);
 
-                      let case_1 = String::from("net_name");
-                      let case_2 = String::from("data_received");
-                      let case_3 = String::from("data_transmitted");
-                      let case_4 = String::from("data_transmitted_total");
-                      if net_info == case_1 {
-                          net_name_column.add_child(TextView::new(space_value));
-                          net_name_column.add_child(DummyView);
-                      } else if net_info == case_2 {
-                          data_received_column.add_child(TextView::new(space_value));
-                          data_received_column.add_child(DummyView);
-                      } else if net_info == case_3 {
-                        data_transmitted_column.add_child(TextView::new(space_value));
-                        data_transmitted_column.add_child(DummyView);
-                      } else if net_info == case_4{
-                        data_transmitted_total_column.add_child(TextView::new(space_value));
-                        data_transmitted_total_column.add_child(DummyView);
-                      }  
-                }
-            cpt+=1;
+            let case_1 = String::from("net_name");
+            let case_2 = String::from("data_received");
+            let case_3 = String::from("data_transmitted");
+            let case_4 = String::from("data_transmitted_total");
+            if net_info == case_1 {
+                net_name_column.add_child(TextView::new(space_value));
+                net_name_column.add_child(DummyView);
+            } else if net_info == case_2 {
+                data_received_column.add_child(TextView::new(space_value));
+                data_received_column.add_child(DummyView);
+            } else if net_info == case_3 {
+                data_transmitted_column.add_child(TextView::new(space_value));
+                data_transmitted_column.add_child(DummyView);
+            } else if net_info == case_4 {
+                data_transmitted_total_column.add_child(TextView::new(space_value));
+                data_transmitted_total_column.add_child(DummyView);
+            }
         }
+        cpt += 1;
+    }
 
-        return_button_layout.add_child(Button::new("Return Menu", menu));
-        let string_ip = format!("{}", basic_network::get_ip_routes());
-        ip_column.add_child(TextView::new(string_ip));
+    return_button_layout.add_child(Button::new("Return Menu", menu));
+    let string_ip = format!("{}", basic_network::get_ip_routes());
+    ip_column.add_child(TextView::new(string_ip));
     s.pop_layer();
     s.add_layer(
         Dialog::around(
             LinearLayout::vertical()
-                .child(LinearLayout::horizontal()
-                    .child(netwo)
-                    .child(net_name_column)
-                    .child(data_received_column)
-                    .child(data_transmitted_column)
-                    .child(data_transmitted_total_column)
-                    .child(return_button_layout),
+                .child(
+                    LinearLayout::horizontal()
+                        .child(netwo)
+                        .child(net_name_column)
+                        .child(data_received_column)
+                        .child(data_transmitted_column)
+                        .child(data_transmitted_total_column)
+                        .child(return_button_layout),
                 )
-                .child(LinearLayout::horizontal()
-                        .child(ip_column),
-                )
-
+                .child(LinearLayout::horizontal().child(ip_column)),
         )
-            .title("RustyMinitel / Network")
-        );
-    }
-
-
+        .title("RustyMinitel / Network"),
+    );
+}
 
 fn process(s: &mut Cursive) {
     let mut cpt = 1;
@@ -215,23 +220,73 @@ fn process(s: &mut Cursive) {
 
     let buttons = LinearLayout::vertical()
         .child(DummyView)
-        .child(Button::new("Return to menu", menu));
-    let process_infos1 = LinearLayout::vertical()
         .child(DummyView)
-        .child(TextView::new("test"));
-    let process_infos2 = LinearLayout::vertical()
         .child(DummyView)
-        .child(TextView::new("test"));
-    let mut process = LinearLayout::vertical().child(DummyView);
+        .child(DummyView)
+        .child(TextView::new("-------"))
+        .child(Button::new("Return to menu", menu))
+        .child(Button::new("Kill a process", kill_process))
+        .child(TextView::new("-------"));
+    let mut process = LinearLayout::vertical()
+        .child(DummyView)
+        .child(TextView::new("Process Number  "))
+        .child(DummyView);
+    let mut process_infos1 = LinearLayout::vertical()
+        .child(DummyView)
+        .child(TextView::new("Processes Name "))
+        .child(DummyView);
+    let mut process_infos2 = LinearLayout::vertical()
+        .child(DummyView)
+        .child(TextView::new("Processes Usage "))
+        .child(DummyView);
+    let mut process_infos3 = LinearLayout::vertical()
+        .child(DummyView)
+        .child(TextView::new("Processes PID "))
+        .child(DummyView);
+    let mut process_infos4 = LinearLayout::vertical()
+        .child(DummyView)
+        .child(TextView::new("Proceses Start "))
+        .child(DummyView);
+    let mut process_infos5 = LinearLayout::vertical()
+        .child(DummyView)
+        .child(TextView::new("Processes Runtime "))
+        .child(DummyView);
+    let mut process_infos6 = LinearLayout::vertical()
+        .child(DummyView)
+        .child(TextView::new("Processes Status "))
+        .child(DummyView);
     for proc in processes {
         let process_info = format!("Process n°{}", cpt);
-        process.add_child(Button::new(process_info, menu));
-        // // for (key, value) in proc.into_iter() {
-        //     print!("{} ", value);
-        // }
-        cpt += 1;
-    }
+        process.add_child(TextView::new(process_info));
+        for (key, value) in proc.into_iter() {
+            let key_string = key.to_string();
+            let value_string = value.to_string();
+            let space_value = format!("{} ", value_string);
 
+            if key_string == "proc_name" {
+                process_infos1.add_child(TextView::new(&space_value));
+            }
+            if key_string == "proc_usage" {
+                process_infos2.add_child(TextView::new(&space_value));
+            }
+            if key_string == "proc_pid" {
+                process_infos3.add_child(TextView::new(&space_value));
+            }
+            if key_string == "proc_start" {
+                process_infos4.add_child(TextView::new(&space_value));
+            }
+            if key_string == "proc_runtime" {
+                process_infos5.add_child(TextView::new(&space_value));
+            }
+            if key_string == "proc_status" {
+                process_infos6.add_child(TextView::new(&space_value));
+            }
+        }
+        cpt += 1;
+        if cpt >= 46 {
+            break;
+        }
+    }
     s.pop_layer();
     s.add_layer(
         Dialog::around(
@@ -239,6 +294,10 @@ fn process(s: &mut Cursive) {
                 .child(process)
                 .child(process_infos1)
                 .child(process_infos2)
+                .child(process_infos3)
+                .child(process_infos4)
+                .child(process_infos5)
+                .child(process_infos6)
                 .child(DummyView)
                 .child(buttons),
         )
@@ -258,71 +317,38 @@ fn menu(s: &mut Cursive) {
     );
 }
 
-// fn main() {
-//     let mut sys = System::new_all();
-//     let cpu = basic_sys::get_basic_cpu_infos(&sys);
-//     let adv_cpu = basic_sys::get_adv_cpu_infos(&sys);
-//     let base = basic_sys::get_os_infos(&sys);
-//     let processes = basic_process::get_all_process(&sys);
-//     let networks = basic_network::get_networks(&sys);
+fn kill_process(s: &mut Cursive) {
+    fn ok(s: &mut Cursive, name: &str) {
+        let sys = System::new_all();
+        kill_proc(&sys, name.parse().unwrap());
+        s.pop_layer();
+    }
 
-//     let mut cpt = 1;
+    pub fn kill_proc(sys: &System, pid: i32) -> bool {
+        return if let Some(process) = sys.process(Pid::from(pid)) {
+            process.kill();
+            true
+        } else {
+            false
+        };
+    }
 
-//     sys.refresh_all();
-
-//     println!("\n============== CPU BASE INFO ===============");
-//     for (key, value) in cpu.into_iter() {
-//         println!("{} : {}", key, value);
-
-//     }
-//     println!("\n============== CPU FULL INFO ===============");
-//     for (key, value) in adv_cpu.into_iter() {
-//         println!("{} : ",key);
-//         if key == "core_temps" {
-//             for i in value {
-//                 print!("Core {} : {}°C ",cpt,i);
-//             }
-//             cpt = 1;
-//         }else if key == "core_freqs"{
-//             for i in value {
-//                 print!("Core {} : {}MHz ",cpt,i);
-//                 cpt+=1;
-//             }
-//             cpt = 1;
-//         }else if key=="comp_temps"{
-//             for i in value {
-//                 print!("Component : {}°C ",i);
-
-//             }
-//         }
-//         cpt = 1;
-
-//     }
-//     println!("\n============== SYS BASE INFO ===============");
-
-//     for(key,value) in base.into_iter(){
-//         println!("{} : {:?}", key, &value);
-//     }
-
-//     println!("\n\n ============== PROCESSES INFO ===============");
-//     for proc in processes{
-//         println!("\nProcess n°{} : ",cpt);
-//         for(key,value) in proc.into_iter(){
-//             print!("{} : {} ",key,value);
-//         }
-//         cpt+=1;
-//     } cpt = 0;
-
-//     println!("\n\n ============== NETWORK INFO ===============");
-//     for net in networks{
-//         println!("\nNetwork n°{} : ",cpt);
-//         for(key,value) in net.into_iter(){
-//             print!("{} : {} ",key,value);
-//         }
-//         cpt+=1;
-//     } cpt = 0;
-
-//     println!("\n\n ============== TABLE ROUTES IP ===============");
-//     println!("{}",basic_network::get_ip_routes());
-
-// }
+    s.add_layer(
+        Dialog::around(
+            EditView::new()
+                .on_submit(ok)
+                .with_name("pid_kill")
+                .fixed_width(10),
+        )
+        .title("Enter the PID")
+        .button("Kill", |s| {
+            let pid = s
+                .call_on_name("pid_kill", |view: &mut EditView| view.get_content())
+                .unwrap();
+            ok(s, &pid);
+        })
+        .button("Cancel", |s| {
+            s.pop_layer();
+        }),
+    );
+}
