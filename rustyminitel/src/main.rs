@@ -36,7 +36,7 @@ fn information(s: &mut Cursive) {
     let mut base_info = LinearLayout::vertical().child(line).child(buttons);
 
     for (key, value) in base.into_iter() {
-        let info_string = format!("{} : {:?}", key.to_string(), value);
+        let info_string = format!("{} : {:?}", key.to_string(), value.unwrap());
 
         base_info.add_child(DummyView);
         base_info.add_child(TextView::new(info_string));
