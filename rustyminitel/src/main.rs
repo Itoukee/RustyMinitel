@@ -29,10 +29,10 @@ fn main() {
 }
 
 fn information(s: &mut Cursive) {
-    let mut sys = System::new_all();
+    let sys = System::new_all();
     let base = basic_sys::get_os_infos(&sys);
-    let mut line = LinearLayout::horizontal();
-    let mut buttons = LinearLayout::horizontal();
+    let line = LinearLayout::horizontal();
+    let buttons = LinearLayout::horizontal();
     let mut base_info = LinearLayout::vertical().child(line).child(buttons);
 
     for (key, value) in base.into_iter() {
@@ -54,10 +54,10 @@ fn information(s: &mut Cursive) {
 }
 
 fn cpu_menu(s: &mut Cursive) {
-    let mut sys = System::new_all();
+    let sys = System::new_all();
     let cpu = basic_sys::get_basic_cpu_infos(&sys);
-    let mut line = LinearLayout::horizontal();
-    let mut buttons = LinearLayout::horizontal();
+    let line = LinearLayout::horizontal();
+    let buttons = LinearLayout::horizontal();
     let mut cpu_info = LinearLayout::vertical().child(line).child(buttons);
 
     for (key, value) in cpu.into_iter() {
@@ -80,52 +80,53 @@ fn cpu_menu(s: &mut Cursive) {
 }
 
 fn cpu_menu_more(s: &mut Cursive) {
-    let mut sys = System::new_all();
+    let sys = System::new_all();
     let adv_cpu = basic_sys::get_adv_cpu_infos(&sys);
-    let mut line = LinearLayout::horizontal();
+    let mut line_1 = LinearLayout::horizontal();
+    let mut line_2 = LinearLayout::horizontal();
+    let mut line_3 = LinearLayout::horizontal();
     let mut buttons = LinearLayout::horizontal();
-    let mut adv_cpu_info = LinearLayout::vertical().child(line).child(buttons);
-    let mut cpt = 1;
-
+    let mut cpt;
     for (key, value) in adv_cpu.into_iter() {
         if key == "core_temps" {
             cpt = 1;
             for i in value {
-                adv_cpu_info.add_child(DummyView);
+                line_1.add_child(DummyView);
                 let info_cpu = format!("Core {} : {}°C ", cpt, i);
-                adv_cpu_info.add_child(TextView::new(info_cpu));
+                line_1.add_child(TextView::new(info_cpu));
             }
-            adv_cpu_info.add_child(DummyView);
         } else if key == "core_freqs" {
             cpt = 1;
             for i in value {
-                adv_cpu_info.add_child(DummyView);
+                line_2.add_child(DummyView);
                 let info_cpu = format!("Core {} : {}MHz ", cpt, i);
-                adv_cpu_info.add_child(TextView::new(info_cpu));
+                line_2.add_child(TextView::new(info_cpu));
                 cpt += 1;
             }
-            adv_cpu_info.add_child(DummyView);
         } else if key == "comp_temps" {
-            cpt = 1;
             for i in value {
-                adv_cpu_info.add_child(DummyView);
+                line_3.add_child(DummyView);
                 let info_cpu = format!("Component : {}°C ", i);
-                adv_cpu_info.add_child(TextView::new(info_cpu));
+                line_3.add_child(TextView::new(info_cpu));
             }
-            adv_cpu_info.add_child(DummyView);
         }
     }
-
-    adv_cpu_info.add_child(Button::new("System", information));
-    adv_cpu_info.add_child(Button::new("Return Menu", menu));
+    buttons.add_child(Button::new("System", information));
+    buttons.add_child(DummyView);
+    buttons.add_child(Button::new("Return Menu", menu));
 
     s.pop_layer();
     s.add_layer(
         Dialog::around(
-            LinearLayout::horizontal()
+            LinearLayout::vertical()
                 .child(DummyView)
-                .child(adv_cpu_info)
-                .child(DummyView),
+                .child(line_1)
+                .child(DummyView)
+                .child(line_2)
+                .child(DummyView)
+                .child(line_3)
+                .child(DummyView)
+                .child(buttons),
         )
         .title("RustyMinitel / Informations / CPU / More"),
     );

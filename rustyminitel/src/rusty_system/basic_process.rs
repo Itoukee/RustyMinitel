@@ -19,12 +19,3 @@ pub fn get_all_process(sys: &System) -> Vec<HashMap<&'static str, String>> {
     }
     return proc_advanced;
 }
-
-// pub fn kill_proc(sys:&System, pid:i32) -> bool {
-//     return if let Some(process) = sys.process(Pid::from(pid)) {
-//         process.kill();
-//         true
-//     } else {
-//         false
-//     }
-// }
