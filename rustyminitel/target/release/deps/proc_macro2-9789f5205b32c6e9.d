@@ -1,0 +1,12 @@
+/home/nino/etna/RustyMinitel/rustyminitel/target/release/deps/proc_macro2-9789f5205b32c6e9.rmeta: /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/lib.rs /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/marker.rs /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/parse.rs /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/detection.rs /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/fallback.rs /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/wrapper.rs
+
+/home/nino/etna/RustyMinitel/rustyminitel/target/release/deps/libproc_macro2-9789f5205b32c6e9.rlib: /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/lib.rs /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/marker.rs /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/parse.rs /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/detection.rs /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/fallback.rs /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/wrapper.rs
+
+/home/nino/etna/RustyMinitel/rustyminitel/target/release/deps/proc_macro2-9789f5205b32c6e9.d: /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/lib.rs /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/marker.rs /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/parse.rs /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/detection.rs /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/fallback.rs /home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/wrapper.rs
+
+/home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/lib.rs:
+/home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/marker.rs:
+/home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/parse.rs:
+/home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/detection.rs:
+/home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/fallback.rs:
+/home/nino/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/wrapper.rs:
