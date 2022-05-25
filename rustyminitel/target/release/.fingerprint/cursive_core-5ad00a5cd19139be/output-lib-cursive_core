@@ -1,0 +1,2 @@
+WARN rustc_metadata::locator no metadata found: incompatible metadata version found: '/home/matheo/Documents/ETNA/group-977048/rustyminitel/target/release/deps/libenumset_derive-9ead1d95125c4cec.so'
+WARN rustc_metadata::locator no metadata found: incompatible metadata version found: '/home/matheo/Documents/ETNA/group-977048/rustyminitel/target/release/deps/libenum_map_derive-8fc996a68d2a404d.so'

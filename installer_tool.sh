@@ -53,6 +53,9 @@ function create_user(){
     sudo touch /home/$name/.bashrc
     sudo bash -c 'echo "export PATH=\"/usr/bin:${PATH}" >> /home/$name/.bashrc'
     echo "rustyminitel" | sudo tee -a /home/$name/.profile
+    sudo chown -R $name /home/$name
+    
+    
     
     
     

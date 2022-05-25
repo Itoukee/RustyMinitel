@@ -7,6 +7,18 @@ mod basic_process;
 #[path = "./rusty_system/basic_network.rs"]
 mod basic_network;
 
+#[path = "./create_files/system_file.rs"]
+mod system_file;
+
+#[path = "./create_files/process_file.rs"]
+mod process_file;
+
+#[path = "./create_files/network_file.rs"]
+mod network_file;
+
+#[path = "./create_files/compress_file.rs"]
+mod compress_file;
+
 use cursive::traits::*;
 use cursive::view::Resizable;
 use cursive::views::{Button, Dialog, DummyView, EditView, LinearLayout, TextView};
@@ -14,6 +26,11 @@ use cursive::Cursive;
 use sysinfo::{Pid, ProcessExt, System, SystemExt};
 
 fn main() {
+    system_file::system_yml();
+    process_file::process_yml();
+    network_file::network_file();
+    compress_file::compress_file();
+
     let mut siv = cursive::default();
 
     siv.add_layer(
@@ -24,7 +41,6 @@ fn main() {
             .button("Process", process)
             .button("Quit", |_q| _q.quit()),
     );
-
     siv.run();
 }
 

@@ -8,4 +8,5 @@ edition = "2021"
 [dependencies]
 cursive = "0.17.0"
 sysinfo = { git = "https://github.com/GuillaumeGomez/sysinfo" }
-
+chrono = "0.4"
+home = "0.5.3"
