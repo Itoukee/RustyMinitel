@@ -30,6 +30,4 @@
 
 ![](https://cdn.discordapp.com/attachments/920687736049008640/961631867935805490/Capture_decran_2022-04-07_a_16.21.39.png)
 
-- But you also have when launching the Minitel, the installation of 3 files grouping the data present in the respective menus of the Minitel (Information, Networks and Processes), located in a single file compress in a tar.gz archive.
-
-- In order to be able to find this famous file, it suffices to go to the "home" of the user. And you will have access to the data from your pc without necessarily going through each Minitel menu.
+When the app will be launched, you will be granted an archive that contains all the data that you could need to send to a reparator. 
